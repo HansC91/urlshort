@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const validUrl = require('valid-url');
+//const validUrl = require('valid-url');
 const nanoid = require('nanoid');
 const Url = require('../models/url');
 const Counter = require('../models/counter');
@@ -20,7 +20,8 @@ router.post('/shorten', async (req, res) => {
   const { url } = req.body;
 
   // Validate URL
-  if (!validUrl.isWebUri(url)) {
+  const urlregcheck = /^(?:www\.)?[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*\.[a-zA-Z]{1,5}(?:\/[a-zA-Z0-9-\/]+)?$/;
+  if (!urlregcheck(url)) {
     return res.status(400).json({ msg: 'Invalid URL' });
   }
 
