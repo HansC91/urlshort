@@ -20,9 +20,7 @@ router.post('/shorten', async (req, res) => {
   const { url } = req.body;
 
   // Validate URL
-  const OWASP_REGEX = /^(?:(?:https?|ftp):\/\/)?(?:www\.)?([a-z0-9]+(?:-[a-z0-9]+)*\.)+[a-z]{2,}$/i;
-  validUrl.uriRegExp = OWASP_REGEX;
-  if (!validUrl.uriRegExp.isUri(url)) {
+  if (!validUrl.isUri(url)) {
     return res.status(400).json({ msg: 'Invalid URL' });
   }
 
