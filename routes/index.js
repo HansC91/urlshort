@@ -20,7 +20,7 @@ router.post('/shorten', async (req, res) => {
   const { url } = req.body;
 
   // Validate URL
-  if (!validUrl.isUri(url)) {
+  if (!validUrl.isWebUri(url)) {
     return res.status(400).json({ msg: 'Invalid URL' });
   }
 
