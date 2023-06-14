@@ -20,6 +20,7 @@ router.post('/shorten', async (req, res) => {
   const { url } = req.body;
 
   // Validate URL
+  validUrl.uriRegExp = /^(https?:\/\/)?(www\.)?([A-Za-z0-9_-]+\.)+[A-Za-z]{2,}(:\d{1,5})?(\/[^\s]*)?$/;
   if (!validUrl.isUri(url)) {
     return res.status(400).json({ msg: 'Invalid URL' });
   }
