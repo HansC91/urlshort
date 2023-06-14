@@ -2,6 +2,10 @@ const express = require('express');
 const router = express.Router();
 const Url = require('../models/url');
 
+router.get('/', async (req, res) => {
+  res.render()
+})
+
 router.get('/:code', async (req, res) => {
   try {
     const url = await Url.findOne({ urlCode: req.params.code });
