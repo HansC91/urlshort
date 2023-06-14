@@ -7,11 +7,16 @@ const Counter = require('../models/counter');
 
 // GET home page
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  res.render('index', { title: 'URL Shortener' });
+});
+
+// GET shortened url.
+router.get('/shorten', function(req, res, next) {
+  res.render('shorten-form', { title: 'URL Shortener' });
 });
 
 // POST create short URL
-router.post('/', async (req, res) => {
+router.post('/shorten', async (req, res) => {
   const { url } = req.body;
 
   // Validate URL
@@ -24,23 +29,24 @@ router.post('/', async (req, res) => {
     let dbUrl = await Url.findOne({ url });
 
     if (dbUrl) {
-      res.json({ hash: dbUrl.hash});
+      return res.render( 'shorten', { shortUrl: dbUrl.shortUrl });
     } else {
       // Create short URL
       const shortId =  nanoid(7);
-      const shortUrl = `http://localhost:3000/\${shortId}`;
+      const shortUrl = `${process.env.BASE_URL}/${shortId}`;
       console.log(shortId);
+      console.log(shortUrl);
 
       dbUrl = new Url({
-        url,
-        shortUrl,
+        url: url,
+        shortUrl: shortUrl,
         urlCode: shortId,
         date: new Date()
       });
 
       await dbUrl.save();
 
-      res.json(dbUrl);
+      res.render('shorten', { shortUrl:  dbUrl.shortUrl });
     }
   } catch (err) {
     console.error(err);
@@ -49,7 +55,7 @@ router.post('/', async (req, res) => {
 });
 
 // Test MongoDB connection
-router.get('/test', async (req, res) => {
+/*router.get('/test', async (req, res) => {
   try {
     // Check if we can connect to MongoDB
     await Counter.findOne();
@@ -59,6 +65,6 @@ router.get('/test', async (req, res) => {
     console.error(err);
     res.status(500).json({ msg: 'MongoDB connection error' });
   }
-});
+});*/
 
 module.exports = router;

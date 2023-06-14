@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
-//const Url = require('../models/url');
+const Url = require('../models/url');
 
-router.get('/stats/:code', async (req, res) => {
+router.get('/:code', async (req, res) => {
   try {
     const url = await Url.findOne({ urlCode: req.params.code });
 

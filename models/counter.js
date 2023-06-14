@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+/*const mongoose = require('mongoose');
 
 const counterSchema = new mongoose.Schema({
   count: {
@@ -7,4 +7,4 @@ const counterSchema = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model('counter', counterSchema);
+module.exports = mongoose.model('counter', counterSchema);*/

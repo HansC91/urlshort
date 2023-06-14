@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Shortened URL</title>
+</head>
+<body>
+  <h1>Shortened URL:</h1>
+  <% if (typeof shortUrl !== 'undefined') { %>
+    <p>Shortened URL: <a href="<%= shortUrl %>"></a><%= shortUrl %></p>
+  <% } %>
+</body>
+</html>
