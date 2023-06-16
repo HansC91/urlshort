@@ -20,13 +20,13 @@ router.post('/shorten', async (req, res) => {
   const { url } = req.body;
 
   // Validate URL
-  const urlregcheck = /^(https?:\/\/)?(?:www\.)?[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*\.[a-zA-Z]{1,5}(?:\/[a-zA-Z0-9-\/]+)?$/;
+  const urlregcheck = /^(https:\/\/|http:\/\/)[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*\.[a-zA-Z]{1,5}(?:\/[a-zA-Z0-9-\/]+)?$/
   if (!urlregcheck.test(url)) {
     return res.status(400).json({ msg: 'Invalid URL' });
   }
 
   try {
-    // Check if URL already exists in database
+    // Check if URL allready exists in database
     let dbUrl = await Url.findOne({ url });
 
     if (dbUrl) {
@@ -55,17 +55,5 @@ router.post('/shorten', async (req, res) => {
   }
 });
 
-// Test MongoDB connection
-/*router.get('/test', async (req, res) => {
-  try {
-    // Check if we can connect to MongoDB
-    await Counter.findOne();
-
-    res.json({ msg: 'MongoDB connection successful' });
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ msg: 'MongoDB connection error' });
-  }
-});*/
 
 module.exports = router;
