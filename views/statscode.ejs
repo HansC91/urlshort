@@ -7,8 +7,8 @@
 <body>
   <h1>Short URL Stats</h1>
   <% if (url) { %>
-    <h2>URL: <%= url.originalUrl %></h2>
-    <p>Clicks: <%= url.clicks %></p>
+    <h2>URL: <%= url.url %></h2>
+    <p>Clicks: <%= url.count %></p>
   <% } else { %>
     <p>URL not found.</p>
   <% } %>

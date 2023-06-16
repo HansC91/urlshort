@@ -7,7 +7,6 @@ var logger = require('morgan');
 var db = require('./db');
 const mongoose = require('mongoose');
 const Url = require('./models/url');
-const Counter = require('./models/counter');
 
 var indexRouter = require('./routes/index');
 var statsRouter = require('./routes/stats');

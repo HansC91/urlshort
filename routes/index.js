@@ -1,9 +1,7 @@
 const express = require('express');
 const router = express.Router();
-//const validUrl = require('valid-url');
 const nanoid = require('nanoid');
 const Url = require('../models/url');
-const Counter = require('../models/counter');
 
 // GET home page
 router.get('/', function(req, res, next) {
@@ -30,8 +28,7 @@ router.post('/shorten', async (req, res) => {
     let dbUrl = await Url.findOne({ url });
 
     if (dbUrl) {
-      const code = url.urlCode
-      return res.render( 'shorten', { shortUrl: dbUrl.shortUrl, code: code });
+      return res.render( 'shorten', { shortUrl: dbUrl.shortUrl});
     } else {
       // Create short URL
       const shortId =  nanoid(7);

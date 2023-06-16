@@ -7,8 +7,7 @@ router.get('/:code', async (req, res) => {
     const url = await Url.findOne({ urlCode: req.params.code });
 
     if (url) {
-      const code = url.urlCode
-      res.render('statscode', { title: 'Short URL Stats', url: url, code: code });
+      res.render('statscode', { title: 'Short URL Stats', url: url });
     } else {
       return res.status(404).json({ msg: 'URL not found' });
     }
