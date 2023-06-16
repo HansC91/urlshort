@@ -30,7 +30,8 @@ router.post('/shorten', async (req, res) => {
     let dbUrl = await Url.findOne({ url });
 
     if (dbUrl) {
-      return res.render( 'shorten', { shortUrl: dbUrl.shortUrl });
+      const code = url.urlCode
+      return res.render( 'shorten', { shortUrl: dbUrl.shortUrl, code: code });
     } else {
       // Create short URL
       const shortId =  nanoid(7);
