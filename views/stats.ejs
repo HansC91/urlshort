@@ -7,9 +7,26 @@
   <body>
     <h1>Check out your stats</h1>
     <form action="/stats/<%= code %>" method="POST">
-      <input type="text" name="url" placeholder="Enter your URL">
+      <input type="text" id="urlInput" name="url" placeholder="Enter your URL">
       <button type="submit">Check stats</button>
     </form>
+    <script>
+      document.getElementById('statsForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent the form from submitting normally
+    
+        const urlInput = document.getElementById('urlInput');
+        const url = urlInput.value;
+    
+        // Extract the last 7 characters from the URL
+        const code = url.slice(-7);
+    
+        // Update the form action with the extracted code
+        document.getElementById('statsForm').action = '/stats/' + code;
+    
+        // Submit the form
+        this.submit();
+      });
+    </script>
     <a class="link" href="/">Create a new short URL</a>
   </body>
 </html>
