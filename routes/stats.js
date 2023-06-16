@@ -20,7 +20,8 @@ router.get('/:code', async (req, res) => {
 
 
 router.get('/', async (req, res) => {
-  res.render('stats', { title: 'Short URL Stats' })
+  const code = req.query.code
+  res.render('stats', { title: 'Short URL Stats', code: code })
 })
 
 
