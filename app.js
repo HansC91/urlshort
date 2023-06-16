@@ -10,8 +10,9 @@ const Url = require('./models/url');
 const Counter = require('./models/counter');
 
 var indexRouter = require('./routes/index');
-var shortRouter = require('./routes/short');
 var statsRouter = require('./routes/stats');
+var shortRouter = require('./routes/short');
+
 
 var app = express();
 
@@ -26,8 +27,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/', shortRouter);
 app.use('/stats', statsRouter);
+app.use('/', shortRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
