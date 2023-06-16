@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Url = require('../models/url');
 
-router.get('/:code', async (req, res) => {
+/*router.get('/:code', async (req, res) => {
   try {
     const url = await Url.findOne({ urlCode: req.params.code });
 
@@ -15,7 +15,7 @@ router.get('/:code', async (req, res) => {
     console.error(err);
     res.status(500).json({ msg: 'Server error' });
   }
-});
+});*/
 
 
 router.get('/', async (req, res) => {
