@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= title %></title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+  <h1>Short URL Stats</h1>
+  <% if (url) { %>
+    <h2>URL: <%= url.originalUrl %></h2>
+    <p>Clicks: <%= url.clicks %></p>
+  <% } else { %>
+    <p>URL not found.</p>
+  <% } %>
+  <a class="link" href="/">Create a new short URL</a>
+  <a class="link" href="/stats/">View stats for your short URL</a>
+</body>
+</html>
