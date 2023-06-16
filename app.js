@@ -10,7 +10,6 @@ const Url = require('./models/url');
 const Counter = require('./models/counter');
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
 var shortRouter = require('./routes/short');
 var statsRouter = require('./routes/stats');
 
@@ -27,7 +26,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
 app.use('/', shortRouter);
 app.use('/stats', statsRouter);
 
